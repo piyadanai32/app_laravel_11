@@ -26,14 +26,18 @@
                                     <td class="py-2 px-4">{{ $user->email }}</td>
                                     <td class="py-2 px-4">{{ $user->usertype }}</td>
                                     <td class="py-2 px-4">
-                                        <a href="{{ route('admin.users.edit', $user->id) }}" class="bg-blue-500 hover:bg-blue-700 text-black py-1 px-2 rounded">
+                                        <a href="{{ route('admin.users.edit', $user->id) }}"
+                                            class="bg-blue-500 hover:bg-blue-700 text-black py-1 px-2 rounded">
                                             แก้ไขสิทธิ์
                                         </a>
 
-                                        <form action="{{ route('admin.users.destroy', $user->id) }}" method="POST" class="inline-block" onsubmit="return confirm('คุณแน่ใจหรือไม่ที่จะลบผู้ใช้นี้?');">
+                                        <form action="{{ route('admin.users.destroy', $user->id) }}" method="POST"
+                                            class="inline-block"
+                                            onsubmit="return confirm('คุณแน่ใจหรือไม่ที่จะลบผู้ใช้นี้?');">
                                             @csrf
                                             @method('DELETE')
-                                            <button type="submit" class="bg-red-500 hover:bg-red-700 text-black py-1 px-2 rounded">
+                                            <button type="submit"
+                                                class="bg-red-500 hover:bg-red-700 text-black py-1 px-2 rounded">
                                                 ลบ
                                             </button>
                                         </form>

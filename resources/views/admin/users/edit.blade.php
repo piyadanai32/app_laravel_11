@@ -17,12 +17,14 @@
                         <!-- ชื่อ และอีเมลจะถูกซ่อนหรือไม่แสดงในฟอร์ม -->
                         <div class="mb-4">
                             <label class="block text-gray-700">ชื่อ:</label>
-                            <input type="text" name="name" value="{{ $user->name }}" disabled class="w-full border rounded p-2 bg-gray-200">
+                            <input type="text" name="name" value="{{ $user->name }}" disabled
+                                class="w-full border rounded p-2 bg-gray-200">
                         </div>
 
                         <div class="mb-4">
                             <label class="block text-gray-700">อีเมล:</label>
-                            <input type="email" name="email" value="{{ $user->email }}" disabled class="w-full border rounded p-2 bg-gray-200">
+                            <input type="email" name="email" value="{{ $user->email }}" disabled
+                                class="w-full border rounded p-2 bg-gray-200">
                         </div>
 
                         <!-- แก้ไขเฉพาะ usertype -->
@@ -34,7 +36,8 @@
                             </select>
                         </div>
 
-                        <button type="submit" class="bg-green-500 hover:bg-green-700 text-black font-bold py-2 px-4 rounded">
+                        <button type="submit"
+                            class="bg-green-500 hover:bg-green-700 text-black font-bold py-2 px-4 rounded">
                             บันทึกการเปลี่ยนแปลง
                         </button>
                     </form>

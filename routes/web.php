@@ -35,5 +35,8 @@ Route::middleware('auth','adminMiddleware')->group(function () {
     Route::get('/admin/dashboard',[AdminController::class,'index'])->name('admin.dashboard');
     Route::get('admin/lessons',[AdminLessonsController::class,'index'])->name('admin.lessons');
     Route::get('admin/users',[UserlistController::class,'index'])->name('admin.users');
+    Route::get('/admin/users/{id}/edit', [UserlistController::class, 'edit'])->name('admin.users.edit');
+    Route::patch('/admin/users/{id}', [UserlistController::class, 'update'])->name('admin.users.update');
+    Route::delete('admin/users/{id}', [UserlistController::class, 'destroy'])->name('admin.users.destroy');
 
 });

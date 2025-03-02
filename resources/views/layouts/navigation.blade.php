@@ -130,9 +130,6 @@
             </div>
 
             <div class="mt-3 space-y-1">
-                <x-responsive-nav-link :href="route('profile.edit')">
-                    {{ __('Profile') }}
-                </x-responsive-nav-link>
                 {{-- admin --}}
                 @if (Auth::user()->usertype == 'admin')
                     <x-responsive-nav-link href="lessons" :active="request()->routeIs('admin.lessons')">

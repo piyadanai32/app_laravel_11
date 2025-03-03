@@ -20,18 +20,18 @@
 
                     {{-- admin --}}
                     @if (Auth::user()->usertype == 'admin')
-                        <x-nav-link href="lessons" :active="request()->routeIs('admin.lessons')">
-                            {{ __('Lessons') }}
-                        </x-nav-link>
                         <x-nav-link href="users" :active="request()->routeIs('admin.users')">
                             {{ __('Users') }}
+                        </x-nav-link>
+                        <x-nav-link href="courses" :active="request()->routeIs('admin.courses')">
+                            {{ __('Courses') }}
                         </x-nav-link>
                     @endif
 
                     {{-- users --}}
                     @if (Auth::user()->usertype == 'user')
-                        <x-nav-link href="lessons" :active="request()->routeIs('user.lessons')">
-                            {{ __('Lessons') }}
+                        <x-nav-link href="courses" :active="request()->routeIs('courses')">
+                            {{ __('Courses') }}
                         </x-nav-link>
                         <x-nav-link href="profile" :active="request()->routeIs('profile.edit')">
                             {{ __('Profile') }}
@@ -66,8 +66,8 @@
 
                         {{-- admin --}}
                         @if (Auth::user()->usertype == 'admin')
-                            <x-dropdown-link href="lessons" :active="request()->routeIs('admin.lessons')">
-                                {{ __('Lessons') }}
+                            <x-dropdown-link href="courses" :active="request()->routeIs('admin.courses')">
+                                {{ __('Courses') }}
                             </x-dropdown-link>
                             <x-dropdown-link href="users" :active="request()->routeIs('admin.users')">
                                 {{ __('Users') }}
@@ -76,8 +76,8 @@
 
                         {{-- users --}}
                         @if (Auth::user()->usertype == 'user')
-                            <x-dropdown-link href="lessons" :active="request()->routeIs('user.lessons')">
-                                {{ __('Lessons') }}
+                            <x-dropdown-link href="courses" :active="request()->routeIs('user.courses')">
+                                {{ __('Courses') }}
                             </x-dropdown-link>
                             <x-dropdown-link href="profile" :active="request()->routeIs('profile.edit')">
                                 {{ __('Profile') }}

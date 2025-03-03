@@ -5,7 +5,6 @@ use App\Http\Controllers\User\UserController;
 use App\Http\Controllers\User\CourseUserController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\UserlistController;
-use App\Http\Controllers\Admin\QuestionsController;
 use App\Http\Controllers\Admin\CoursesController;
 use Illuminate\Support\Facades\Route;
 
@@ -48,6 +47,4 @@ Route::middleware('auth', 'adminMiddleware')->group(function () {
     Route::patch('admin/courses/{id}', [CoursesController::class, 'update'])->name('admin.courses.update');
     Route::delete('admin/courses/{id}', [CoursesController::class, 'destroy'])->name('admin.courses.destroy');
 
-    Route::get('admin/questions', [QuestionsController::class, 'index'])->name('admin.questions');
-    Route::get('admin/questions/create', [QuestionsController::class, 'create'])->name('admin.questions.create');
 });

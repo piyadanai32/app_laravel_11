@@ -10,7 +10,7 @@ class UserlistController extends Controller
 {
     public function index()
     {
-        $users = User::all(); // ดึงข้อมูลผู้ใช้ทั้งหมดจากฐานข้อมูล
+        $users = User::latest()->paginate(10); // ดึงข้อมูลและแบ่งหน้า 
         return view('admin.users', compact('users')); // ส่งข้อมูลไปยัง View
     }
     public function edit($id)

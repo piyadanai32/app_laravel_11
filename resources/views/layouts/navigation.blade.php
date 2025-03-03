@@ -26,6 +26,9 @@
                         <x-nav-link href="courses" :active="request()->routeIs('admin.courses')">
                             {{ __('Courses') }}
                         </x-nav-link>
+                        <x-nav-link href="questions" :active="request()->routeIs('admin.questions')">
+                            {{ __('Questions') }}
+                        </x-nav-link>
                     @endif
 
                     {{-- users --}}

@@ -17,6 +17,6 @@ class CourseUserController extends Controller
     public function show($id)
     {
         $course = Course::findOrFail($id);
-        return view('course_show', compact('course'));
+        return view('courses.show', compact('course'));
     }
 }

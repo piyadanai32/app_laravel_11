@@ -30,6 +30,38 @@
                             <p>เกิดข้อผิดพลาด โปรดลองอีกครั้งในภายหลัง (ID การเล่น: {{ $course->youtube_link }})</p>
                         @endif
                     </div>
+                    <div class="mt-4">
+                        @if (session('results'))
+                            <div class="mb-4">
+                                <h3>คะแนนล่าสุด:</h3>
+                                @php
+                                    $sessionTotalQuestions = count(session('results'));
+                                    $sessionCorrectAnswers = count(array_filter(session('results')));
+                                @endphp
+                                <p>คุณได้ {{ $sessionCorrectAnswers }} จาก {{ $sessionTotalQuestions }} คำถาม</p>
+                            </div>
+                        @else
+                            @php
+                                $totalQuestions = $course->questions->count();
+                                $correctAnswers = \App\Models\Answers::where('user_id', Auth::id())
+                                    ->whereIn('question_id', $course->questions->pluck('id'))
+                                    ->where('is_correct', true)
+                                    ->count();
+                            @endphp
+                            @if ($totalQuestions > 0)
+                                <div class="mb-4">
+                                    <h3>คะแนนล่าสุด:</h3>
+                                    <p>คุณได้ {{ $correctAnswers }} จาก {{ $totalQuestions }} คำถาม</p>
+                                </div>
+                            @endif
+                        @endif
+
+                        @if ($course->userHasAnswered)
+                            <a href="{{ url('courses/' . $course->id . '/questions') }}" class="btn btn-primary">ทำแบบทดสอบใหม่</a>
+                        @else
+                            <a href="{{ url('courses/' . $course->id . '/questions') }}" class="btn btn-primary">ทำแบบทดสอบ</a>
+                        @endif
+                    </div>
                 </div>
             </div>
         </div>

@@ -40,17 +40,17 @@
                             @foreach($course->questions as $index => $question)
                             <div class="question mb-4">
                                 <label class="block text-gray-700 text-sm font-bold mb-2">Question:</label>
-                                <textarea name="questions[{{ $index }}][question_text]" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">{{ $question->question_text }}</textarea>
+                                <textarea name="questions[{{ $question->id }}][question_text]" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">{{ $question->question_text }}</textarea>
                                 <label class="block text-gray-700 text-sm font-bold mb-2">Option A:</label>
-                                <input type="text" name="questions[{{ $index }}][option_a]" value="{{ $question->option_a }}" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                                <input type="text" name="questions[{{ $question->id }}][option_a]" value="{{ $question->option_a }}" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
                                 <label class="block text-gray-700 text-sm font-bold mb-2">Option B:</label>
-                                <input type="text" name="questions[{{ $index }}][option_b]" value="{{ $question->option_b }}" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                                <input type="text" name="questions[{{ $question->id }}][option_b]" value="{{ $question->option_b }}" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
                                 <label class="block text-gray-700 text-sm font-bold mb-2">Option C:</label>
-                                <input type="text" name="questions[{{ $index }}][option_c]" value="{{ $question->option_c }}" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                                <input type="text" name="questions[{{ $question->id }}][option_c]" value="{{ $question->option_c }}" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
                                 <label class="block text-gray-700 text-sm font-bold mb-2">Option D:</label>
-                                <input type="text" name="questions[{{ $index }}][option_d]" value="{{ $question->option_d }}" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                                <input type="text" name="questions[{{ $question->id }}][option_d]" value="{{ $question->option_d }}" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
                                 <label class="block text-gray-700 text-sm font-bold mb-2">Correct Answer:</label>
-                                <select name="questions[{{ $index }}][correct_answer]" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                                <select name="questions[{{ $question->id }}][correct_answer]" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
                                     <option value="a" {{ $question->correct_answer == 'a' ? 'selected' : '' }}>A</option>
                                     <option value="b" {{ $question->correct_answer == 'b' ? 'selected' : '' }}>B</option>
                                     <option value="c" {{ $question->correct_answer == 'c' ? 'selected' : '' }}>C</option>

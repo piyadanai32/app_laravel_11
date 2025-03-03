@@ -9,23 +9,23 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
-                    <table class="table-auto w-full mt-4">
-                        <tbody>
-                            @foreach ($courses as $course)
-                                <tr>
-                                    <td class="border px-4 py-2">
-                                        <a href="{{ route('courses.show', $course->id) }}" class="text-blue-500 hover:underline">
-                                            {{ $course->title }}
-                                        </a>
-                                    </td>
-                                    <td class="border px-4 py-2">{{ $course->description }}</td>
-                                    <td class="border px-4 py-2">
-                                        <img src="{{ asset('storage/' . $course->thumbnail) }}" alt="Thumbnail" class="w-32">
-                                    </td>                             
-                                </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        @foreach ($courses as $course)
+                            <div onclick="window.location='{{ route('courses.show', $course->id) }}'"
+                                class="cursor-pointer border p-4 rounded-lg shadow hover:shadow-lg transition">
+                                <img src="{{ asset('storage/' . $course->thumbnail) }}" alt="Thumbnail"
+                                    class="w-full h-48 object-cover mb-4 rounded">
+                                <h3 class="text-lg font-semibold mb-2">{{ $course->title }}</h3>
+                                <p>
+                                    @if ($course->userHasAnswered)
+                                        <span class="text-green-500">ทำแบบทดสอบแล้ว</span>
+                                    @else
+                                        <span class="text-red-500">ยังไม่เรียน</span>
+                                    @endif
+                                </p>
+                            </div>
+                        @endforeach
+                    </div>
                     {{ $courses->links() }}
                 </div>
             </div>

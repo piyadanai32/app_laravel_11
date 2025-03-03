@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\User\UserController;
 use App\Http\Controllers\User\CourseUserController;
+use App\Http\Controllers\User\AnswersController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\UserlistController;
 use App\Http\Controllers\Admin\CoursesController;
@@ -27,6 +28,9 @@ Route::middleware('auth', 'userMiddleware')->group(function () {
     Route::get('dashboard', [UserController::class, 'index'])->name('dashboard');
     Route::get('courses', [CourseUserController::class, 'index'])->name('courses');
     Route::get('courses/{id}', [CourseUserController::class, 'show'])->name('courses.show');
+    Route::get('courses/{id}/questions', [CourseUserController::class, 'questions'])->name('courses.questions');
+    Route::post('courses/{id}/submit', [AnswersController::class, 'submit'])->name('courses.submit');
+    Route::post('courses/{id}/reset', [AnswersController::class, 'reset'])->name('courses.reset');
 });
 
 //admin
@@ -42,9 +46,9 @@ Route::middleware('auth', 'adminMiddleware')->group(function () {
 
     Route::get('admin/courses', [CoursesController::class, 'index'])->name('admin.courses');
     Route::get('admin/courses/create', [CoursesController::class, 'create'])->name('admin.courses.create');
-    Route::post('admin/courses', [CoursesController::class, 'store'])->name('admin.courses.store');
+    Route::post('admin.courses', [CoursesController::class, 'store'])->name('admin.courses.store');
     Route::get('admin/courses/{id}/edit', [CoursesController::class, 'edit'])->name('admin.courses.edit');
-    Route::patch('admin/courses/{id}', [CoursesController::class, 'update'])->name('admin.courses.update');
-    Route::delete('admin/courses/{id}', [CoursesController::class, 'destroy'])->name('admin.courses.destroy');
+    Route::patch('admin.courses/{id}', [CoursesController::class, 'update'])->name('admin.courses.update');
+    Route::delete('admin.courses/{id}', [CoursesController::class, 'destroy'])->name('admin.courses.destroy');
 
 });

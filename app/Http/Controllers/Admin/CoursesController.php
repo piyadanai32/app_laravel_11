@@ -37,6 +37,7 @@ class CoursesController extends Controller
             'description' => 'nullable|string',
             'thumbnail' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
             'youtube_link' => 'nullable|string',
+            'questions' => 'required|array|min:1|max:5',
             'questions.*.question_text' => 'required|string',
             'questions.*.option_a' => 'required|string',
             'questions.*.option_b' => 'required|string',
@@ -84,6 +85,7 @@ class CoursesController extends Controller
             'description' => 'nullable|string',
             'thumbnail' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'youtube_link' => 'nullable|string',
+            'questions' => 'required|array|min:1|max:5',
             'questions.*.question_text' => 'required|string',
             'questions.*.option_a' => 'required|string',
             'questions.*.option_b' => 'required|string',
@@ -105,8 +107,8 @@ class CoursesController extends Controller
             'youtube_link' => $request->youtube_link,
         ]);
 
-        foreach ($request->questions as $index => $question) {
-            $questionModel = Questions::find($index);
+        foreach ($request->questions as $questionId => $question) {
+            $questionModel = Questions::find($questionId);
             if ($questionModel) {
                 $questionModel->update([
                     'question_text' => $question['question_text'],

@@ -20,23 +20,24 @@
 
                     {{-- admin --}}
                     @if (Auth::user()->usertype == 'admin')
-                        <x-nav-link href="users" :active="request()->routeIs('admin.users')">
+                        <x-nav-link href="{{ url('admin/users') }}" :active="request()->routeIs('admin.users')">
                             {{ __('Users') }}
                         </x-nav-link>
-                        <x-nav-link href="courses" :active="request()->routeIs('admin.courses')">
+                        <x-nav-link href="{{ url('admin/courses') }}" :active="request()->routeIs('admin.courses')">
                             {{ __('Courses') }}
                         </x-nav-link>
-                        <x-nav-link href="questions" :active="request()->routeIs('admin.questions')">
+                        <x-nav-link href="{{ url('admin/questions') }}" :active="request()->routeIs('admin.questions')">
                             {{ __('Questions') }}
                         </x-nav-link>
                     @endif
 
+
                     {{-- users --}}
                     @if (Auth::user()->usertype == 'user')
-                        <x-nav-link href="courses" :active="request()->routeIs('courses')">
+                        <x-nav-link href="{{ url('courses') }}" :active="request()->routeIs('courses')">
                             {{ __('Courses') }}
                         </x-nav-link>
-                        <x-nav-link href="profile" :active="request()->routeIs('profile.edit')">
+                        <x-nav-link href="{{ url('profile') }}" :active="request()->routeIs('profile.edit')">
                             {{ __('Profile') }}
                         </x-nav-link>
                     @endif

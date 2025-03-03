@@ -34,6 +34,29 @@
                         </label>
                         <input id="youtube_link" type="text" name="youtube_link" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
                     </div>
+                    <div id="questions-container">
+                        <h3 class="text-lg font-semibold mb-4">Questions</h3>
+                        <div class="question mb-4">
+                            <label class="block text-gray-700 text-sm font-bold mb-2">Question:</label>
+                            <textarea name="questions[0][question_text]" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"></textarea>
+                            <label class="block text-gray-700 text-sm font-bold mb-2">Option A:</label>
+                            <input type="text" name="questions[0][option_a]" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                            <label class="block text-gray-700 text-sm font-bold mb-2">Option B:</label>
+                            <input type="text" name="questions[0][option_b]" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                            <label class="block text-gray-700 text-sm font-bold mb-2">Option C:</label>
+                            <input type="text" name="questions[0][option_c]" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                            <label class="block text-gray-700 text-sm font-bold mb-2">Option D:</label>
+                            <input type="text" name="questions[0][option_d]" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                            <label class="block text-gray-700 text-sm font-bold mb-2">Correct Answer:</label>
+                            <select name="questions[0][correct_answer]" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                                <option value="a">A</option>
+                                <option value="b">B</option>
+                                <option value="c">C</option>
+                                <option value="d">D</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button type="button" id="add-question" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Add Question</button>
                     <div class="flex items-center justify-between">
                         <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
                             {{ __('Create Course') }}
@@ -43,4 +66,32 @@
             </div>
         </div>
     </div>
+    <script>
+        document.getElementById('add-question').addEventListener('click', function() {
+            const container = document.getElementById('questions-container');
+            const questionCount = container.getElementsByClassName('question').length;
+            const newQuestion = document.createElement('div');
+            newQuestion.classList.add('question', 'mb-4');
+            newQuestion.innerHTML = `
+                <label class="block text-gray-700 text-sm font-bold mb-2">Question:</label>
+                <textarea name="questions[${questionCount}][question_text]" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"></textarea>
+                <label class="block text-gray-700 text-sm font-bold mb-2">Option A:</label>
+                <input type="text" name="questions[${questionCount}][option_a]" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                <label class="block text-gray-700 text-sm font-bold mb-2">Option B:</label>
+                <input type="text" name="questions[${questionCount}][option_b]" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                <label class="block text-gray-700 text-sm font-bold mb-2">Option C:</label>
+                <input type="text" name="questions[${questionCount}][option_c]" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                <label class="block text-gray-700 text-sm font-bold mb-2">Option D:</label>
+                <input type="text" name="questions[${questionCount}][option_d]" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                <label class="block text-gray-700 text-sm font-bold mb-2">Correct Answer:</label>
+                <select name="questions[${questionCount}][correct_answer]" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                    <option value="a">A</option>
+                    <option value="b">B</option>
+                    <option value="c">C</option>
+                    <option value="d">D</option>
+                </select>
+            `;
+            container.appendChild(newQuestion);
+        });
+    </script>
 </x-app-layout>

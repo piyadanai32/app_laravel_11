@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Course;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Questions;
 
 class CoursesController extends Controller
 {
@@ -36,18 +37,36 @@ class CoursesController extends Controller
             'description' => 'nullable|string',
             'thumbnail' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
             'youtube_link' => 'nullable|string',
+            'questions.*.question_text' => 'required|string',
+            'questions.*.option_a' => 'required|string',
+            'questions.*.option_b' => 'required|string',
+            'questions.*.option_c' => 'required|string',
+            'questions.*.option_d' => 'required|string',
+            'questions.*.correct_answer' => 'required|string|in:a,b,c,d',
         ]);
 
         // อัปโหลดไฟล์รูปภาพ
         $thumbnailPath = $request->file('thumbnail')->store('courses', 'public');
 
-        Course::create([
+        $course = Course::create([
             'title' => $request->title,
             'description' => $request->description,
             'thumbnail' => $thumbnailPath,
             'youtube_link' => $request->youtube_link,
             'user_id' => Auth::user()->id,
         ]);
+
+        foreach ($request->questions as $question) {
+            Questions::create([
+                'course_id' => $course->id,
+                'question_text' => $question['question_text'],
+                'option_a' => $question['option_a'],
+                'option_b' => $question['option_b'],
+                'option_c' => $question['option_c'],
+                'option_d' => $question['option_d'],
+                'correct_answer' => $question['correct_answer'],
+            ]);
+        }
 
         return redirect()->route('admin.courses')->with('success', 'คอร์สถูกสร้างเรียบร้อยแล้ว!');
     }
@@ -65,6 +84,12 @@ class CoursesController extends Controller
             'description' => 'nullable|string',
             'thumbnail' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'youtube_link' => 'nullable|string',
+            'questions.*.question_text' => 'required|string',
+            'questions.*.option_a' => 'required|string',
+            'questions.*.option_b' => 'required|string',
+            'questions.*.option_c' => 'required|string',
+            'questions.*.option_d' => 'required|string',
+            'questions.*.correct_answer' => 'required|string|in:a,b,c,d',
         ]);
 
         $course = Course::findOrFail($id);
@@ -79,6 +104,30 @@ class CoursesController extends Controller
             'description' => $request->description,
             'youtube_link' => $request->youtube_link,
         ]);
+
+        foreach ($request->questions as $index => $question) {
+            $questionModel = Questions::find($index);
+            if ($questionModel) {
+                $questionModel->update([
+                    'question_text' => $question['question_text'],
+                    'option_a' => $question['option_a'],
+                    'option_b' => $question['option_b'],
+                    'option_c' => $question['option_c'],
+                    'option_d' => $question['option_d'],
+                    'correct_answer' => $question['correct_answer'],
+                ]);
+            } else {
+                Questions::create([
+                    'course_id' => $course->id,
+                    'question_text' => $question['question_text'],
+                    'option_a' => $question['option_a'],
+                    'option_b' => $question['option_b'],
+                    'option_c' => $question['option_c'],
+                    'option_d' => $question['option_d'],
+                    'correct_answer' => $question['correct_answer'],
+                ]);
+            }
+        }
 
         return redirect()->route('admin.courses')->with('success', 'คอร์สถูกแก้ไขเรียบร้อยแล้ว!');
     }

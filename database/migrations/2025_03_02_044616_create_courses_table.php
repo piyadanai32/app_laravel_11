@@ -17,6 +17,7 @@ return new class extends Migration
             $table->text('description')->nullable();
             $table->string('thumbnail')->nullable(); // รูปปกคอร์ส
             $table->string('youtube_link')->nullable(); // วีดีโอเรียน
+            $table->string('file_path')->nullable(); // ไฟล์คอร์ส
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade'); // ผู้สอน
             $table->timestamps();
         });

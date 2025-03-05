@@ -35,6 +35,14 @@
                             <input type="text" name="youtube_link" value="{{ $course->youtube_link }}" class="w-full border rounded p-2">
                         </div>
 
+                        <div class="mb-4">
+                            <label class="block text-gray-700">ไฟล์คอร์ส:</label>
+                            <input type="file" name="file" class="w-full border rounded p-2">
+                            @if ($course->file_path)
+                                <a href="{{ asset('storage/' . $course->file_path) }}" class="text-blue-500">ดาวน์โหลดไฟล์ปัจจุบัน</a>
+                            @endif
+                        </div>
+
                         <div id="questions-container">
                             <h3 class="text-lg font-semibold mb-4">Questions</h3>
                             @foreach($course->questions as $index => $question)

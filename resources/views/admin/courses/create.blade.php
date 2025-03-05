@@ -29,6 +29,12 @@
                         <input id="thumbnail" type="file" name="thumbnail" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required>
                     </div>
                     <div class="mb-4">
+                        <label class="block text-gray-700 text font-bold mb-2" for="file">
+                            {{ __('ไฟล์คอร์ส') }}
+                        </label>
+                        <input id="file" type="file" name="file" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                    </div>
+                    <div class="mb-4">
                         <label class="block text-gray-700  font-bold mb-2" for="youtube_link">
                             {{ __('ลิงก์ YouTube') }}
                         </label>

@@ -4,7 +4,9 @@
         <div class="flex justify-between h-16">
             <div class="flex">
                 <!-- Logo -->
-                <img src="https://www.bru.ac.th/wp-content/uploads/2018/09/LOGO-bru-227x300.png" alt="" class="h-14 w-10 justify-content items-center ">
+                <a href="/" class="flex items-center">
+                    <img src="https://www.bru.ac.th/wp-content/uploads/2018/09/LOGO-bru-227x300.png" alt="BRU Logo" class="h-10 w-10 rounded-full">
+                </a>
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
@@ -57,26 +59,22 @@
                     </x-slot>
 
                     <x-slot name="content">
-                        {{-- <x-dropdown-link :href="route('profile.edit')">
-                            {{ __('Profile') }}
-                        </x-dropdown-link> --}}
-
                         {{-- admin --}}
                         @if (Auth::user()->usertype == 'admin')
-                            <x-dropdown-link href="courses" :active="request()->routeIs('admin.courses')" class="no-underline text-yellow-500 hover:text-yellow-300">
-                                {{ __('Courses') }}
-                            </x-dropdown-link>
-                            <x-dropdown-link href="users" :active="request()->routeIs('admin.users')" class="no-underline text-yellow-500 hover:text-yellow-300">
+                            <x-dropdown-link href="{{ url('admin/users') }}" :active="request()->routeIs('admin.users')" class="no-underline text-yellow-500 hover:text-yellow-300">
                                 {{ __('Users') }}
+                            </x-dropdown-link>
+                            <x-dropdown-link href="{{ url('admin/courses') }}" :active="request()->routeIs('admin.courses')" class="no-underline text-yellow-500 hover:text-yellow-300">
+                                {{ __('Courses') }}
                             </x-dropdown-link>
                         @endif
 
                         {{-- users --}}
                         @if (Auth::user()->usertype == 'user')
-                            <x-dropdown-link href="courses" :active="request()->routeIs('user.courses')" class="no-underline text-yellow-500 hover:text-yellow-300">
+                            <x-dropdown-link href="{{ url('courses') }}" :active="request()->routeIs('courses')" class="no-underline text-yellow-500 hover:text-yellow-300">
                                 {{ __('Courses') }}
                             </x-dropdown-link>
-                            <x-dropdown-link href="profile" :active="request()->routeIs('profile.edit')" class="no-underline text-yellow-500 hover:text-yellow-300">
+                            <x-dropdown-link href="{{ url('profile') }}" :active="request()->routeIs('profile.edit')" class="no-underline text-yellow-500 hover:text-yellow-300">
                                 {{ __('Profile') }}
                             </x-dropdown-link>
                         @endif
@@ -87,7 +85,7 @@
 
                             <x-dropdown-link :href="route('logout')"
                                 onclick="event.preventDefault();
-                                                this.closest('form').submit();" class="no-underline text-yellow-500 hover:text-yellow-300">
+                                                this.closest('form').submit();" class="no-underline text-red-600">
                                 {{ __('Log Out') }}
                             </x-dropdown-link>
                         </form>
@@ -129,20 +127,20 @@
             <div class="mt-3 space-y-1">
                 {{-- admin --}}
                 @if (Auth::user()->usertype == 'admin')
-                    <x-responsive-nav-link href="lessons" :active="request()->routeIs('admin.lessons')" class="no-underline text-yellow-500 hover:text-yellow-300">
-                        {{ __('Lessons') }}
-                    </x-responsive-nav-link>
-                    <x-responsive-nav-link href="users" :active="request()->routeIs('admin.users')" class="no-underline text-yellow-500 hover:text-yellow-300">
+                    <x-responsive-nav-link href="{{ url('admin/users') }}" :active="request()->routeIs('admin.users')" class="no-underline text-yellow-500 hover:text-yellow-300">
                         {{ __('Users') }}
+                    </x-responsive-nav-link>
+                    <x-responsive-nav-link href="{{ url('admin/courses') }}" :active="request()->routeIs('admin.courses')" class="no-underline text-yellow-500 hover:text-yellow-300">
+                        {{ __('Courses') }}
                     </x-responsive-nav-link>
                 @endif
 
                 {{-- users --}}
                 @if (Auth::user()->usertype == 'user')
-                    <x-responsive-nav-link href="lessons" :active="request()->routeIs('user.lessons')" class="no-underline text-yellow-500 hover:text-yellow-300">
-                        {{ __('Lessons') }}
+                    <x-responsive-nav-link href="{{ url('courses') }}" :active="request()->routeIs('courses')" class="no-underline text-yellow-500 hover:text-yellow-300">
+                        {{ __('Courses') }}
                     </x-responsive-nav-link>
-                    <x-responsive-nav-link href="profile" :active="request()->routeIs('profile.edit')" class="no-underline text-yellow-500 hover:text-yellow-300">
+                    <x-responsive-nav-link href="{{ url('profile') }}" :active="request()->routeIs('profile.edit')" class="no-underline text-yellow-500 hover:text-yellow-300">
                         {{ __('Profile') }}
                     </x-responsive-nav-link>
                 @endif
@@ -153,7 +151,7 @@
 
                     <x-responsive-nav-link :href="route('logout')"
                         onclick="event.preventDefault();
-                                        this.closest('form').submit();" class="no-underline text-yellow-500 hover:text-yellow-300">
+                                        this.closest('form').submit();" class="no-underline text-red-600">
                         {{ __('Log Out') }}
                     </x-responsive-nav-link>
                 </form>

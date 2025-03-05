@@ -19,7 +19,8 @@ class Course extends Model
         'description',
         'thumbnail',
         'youtube_link',
-        'user_id'
+        'user_id',
+        'file_path'
     ];
 
     /**

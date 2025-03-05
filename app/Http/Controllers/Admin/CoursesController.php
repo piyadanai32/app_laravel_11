@@ -10,26 +10,17 @@ use App\Models\Questions;
 
 class CoursesController extends Controller
 {
-    /**
-     * แสดงรายการคอร์สทั้งหมด
-     */
     public function index()
     {
-        $courses = Course::latest()->paginate(10); // ดึงข้อมูลและแบ่งหน้า
+        $courses = Course::latest()->paginate(10);
         return view('admin.courses', compact('courses'));
     }
 
-    /**
-     * แสดงฟอร์มสร้างคอร์สใหม่
-     */
     public function create()
     {
         return view('admin.courses.create');
     }
 
-    /**
-     * บันทึกข้อมูลคอร์สใหม่
-     */
     public function store(Request $request)
     {
         $request->validate([
@@ -44,10 +35,14 @@ class CoursesController extends Controller
             'questions.*.option_c' => 'required|string',
             'questions.*.option_d' => 'required|string',
             'questions.*.correct_answer' => 'required|string|in:a,b,c,d',
+            'file' => 'nullable|file|mimes:pdf,doc,docx,zip|max:20480',
         ]);
 
-        // อัปโหลดไฟล์รูปภาพ
         $thumbnailPath = $request->file('thumbnail')->store('courses', 'public');
+
+        if ($request->hasFile('file')) {
+            $filePath = $request->file('file')->store('course_files', 'public');
+        }
 
         $course = Course::create([
             'title' => $request->title,
@@ -55,6 +50,7 @@ class CoursesController extends Controller
             'thumbnail' => $thumbnailPath,
             'youtube_link' => $request->youtube_link,
             'user_id' => Auth::user()->id,
+            'file_path' => $filePath ?? null,
         ]);
 
         foreach ($request->questions as $question) {
@@ -92,6 +88,7 @@ class CoursesController extends Controller
             'questions.*.option_c' => 'required|string',
             'questions.*.option_d' => 'required|string',
             'questions.*.correct_answer' => 'required|string|in:a,b,c,d',
+            'file' => 'nullable|file|mimes:pdf,doc,docx,zip|max:20480',
         ]);
 
         $course = Course::findOrFail($id);
@@ -99,6 +96,11 @@ class CoursesController extends Controller
         if ($request->hasFile('thumbnail')) {
             $thumbnailPath = $request->file('thumbnail')->store('courses', 'public');
             $course->thumbnail = $thumbnailPath;
+        }
+
+        if ($request->hasFile('file')) {
+            $filePath = $request->file('file')->store('course_files', 'public');
+            $course->file_path = $filePath;
         }
 
         $course->update([

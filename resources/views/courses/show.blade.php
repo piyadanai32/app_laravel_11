@@ -46,7 +46,8 @@
                             <h3 class="text-xl font-semibold text-purple-600">ไฟล์ประกอบการเรียน</h3>
                             <div class="mt-4">
                                 <a href="{{ asset('storage/' . $course->file_path) }}"
-                                    class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded no-underline">
+                                    class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded no-underline"
+                                    target="_blank">
                                     ดาวน์โหลดไฟล์ประกอบการเรียน
                                 </a>
                             </div>

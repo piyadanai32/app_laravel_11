@@ -37,7 +37,7 @@
                         </div>
 
                         <button type="submit"
-                            class="bg-green-500 hover:bg-green-700 text-black font-bold py-2 px-4 rounded">
+                            class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
                             บันทึกการเปลี่ยนแปลง
                         </button>
                     </form>

@@ -1,11 +1,11 @@
-<nav x-data="{ open: false }" class="bg-gray-800 border-b border-gray-700">
+<nav x-data="{ open: false }" class="bg-gray-800 border-b border-gray-700 shadow-lg">
     <!-- Primary Navigation Menu -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
             <div class="flex">
                 <!-- Logo -->
                 <a href="/" class="flex items-center">
-                    <img src="https://www.bru.ac.th/wp-content/uploads/2018/09/LOGO-bru-227x300.png" alt="BRU Logo" class="h-10 w-10 rounded-full">
+                    <img src="https://www.bru.ac.th/wp-content/uploads/2018/09/LOGO-bru-227x300.png" alt="BRU Logo" class="h-10 w-10 rounded-full shadow-md">
                 </a>
 
                 <!-- Navigation Links -->
@@ -15,7 +15,6 @@
                         : request()->routeIs('dashboard')" class="no-underline text-yellow-500 hover:text-yellow-300">
                         {{ __('Dashboard') }}
                     </x-nav-link>
-
                     {{-- admin --}}
                     @if (Auth::user()->usertype == 'admin')
                         <x-nav-link href="{{ url('admin/users') }}" :active="request()->routeIs('admin.users')" class="no-underline text-yellow-500 hover:text-yellow-300">
@@ -25,7 +24,6 @@
                             {{ __('Courses') }}
                         </x-nav-link>
                     @endif
-
 
                     {{-- users --}}
                     @if (Auth::user()->usertype == 'user')
@@ -46,7 +44,6 @@
                         <button
                             class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-yellow-500 bg-gray-800 hover:text-yellow-300 focus:outline-none transition ease-in-out duration-150">
                             <div>{{ Auth::user()->name }}</div>
-
                             <div class="ms-1">
                                 <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg"
                                     viewBox="0 0 20 20">
@@ -57,7 +54,6 @@
                             </div>
                         </button>
                     </x-slot>
-
                     <x-slot name="content">
                         {{-- admin --}}
                         @if (Auth::user()->usertype == 'admin')
@@ -82,7 +78,6 @@
                         <!-- Authentication -->
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
-
                             <x-dropdown-link :href="route('logout')"
                                 onclick="event.preventDefault();
                                                 this.closest('form').submit();" class="no-underline text-red-600">
@@ -148,7 +143,6 @@
                 <!-- Authentication -->
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
-
                     <x-responsive-nav-link :href="route('logout')"
                         onclick="event.preventDefault();
                                         this.closest('form').submit();" class="no-underline text-red-600">

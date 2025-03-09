@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-purple-600 leading-tight">
-            {{ __('Admin Courses') }}
+            {{ __('จัดการคอร์ส') }}
         </h2>
     </x-slot>
 
@@ -12,11 +12,11 @@
                     <a href="{{ route('admin.courses.create') }}" class="btn btn-primary">สร้างคอร์สใหม่</a>
                     <table class="table-auto w-full mt-4">
                         <thead>
-                            <tr class="bg-gray-200 text-gray-700">
-                                <th class="px-4 py-2">Title</th>
-                                <th class="px-4 py-2">Description</th>
-                                <th class="px-4 py-2">Thumbnail</th>
-                                <th class="px-4 py-2">Actions</th>
+                            <tr class="bg-gray-200 text-purple-600">
+                                <th class="px-4 py-2">ชื่อเรื่อง</th>
+                                <th class="px-4 py-2">คำอธิบาย</th>
+                                <th class="px-4 py-2">ภาพตัวอย่าง</th>
+                                <th class="px-4 py-2">จัดการ</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -25,14 +25,14 @@
                                     <td class="border px-4 py-2">{{ $course->title }}</td>
                                     <td class="border px-4 py-2">{{ Str::limit($course->description, 50) }}</td>
                                     <td class="border px-4 py-2">
-                                        <img src="{{ asset('storage/' . $course->thumbnail) }}" alt="Thumbnail" class="w-32">
+                                        <img src="{{ asset('storage/' . $course->thumbnail) }}" alt="ภาพตัวอย่าง" class="w-32">
                                     </td>                                    
                                     <td class="border px-4 py-2">
                                         <a href="{{ route('admin.courses.edit', $course->id) }}" class="btn btn-sm btn-primary">แก้ไขคอร์ส</a>
                                         <form action="{{ route('admin.courses.destroy', $course->id) }}" method="POST" style="display:inline;">
                                             @csrf
                                             @method('DELETE')
-                                            <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure?')">ลบ</button>
+                                            <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('คุณแน่ใจหรือไม่?')">ลบ</button>
                                         </form>
                                     </td>
                                 </tr>

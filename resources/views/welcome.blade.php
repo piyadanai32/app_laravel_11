@@ -10,7 +10,15 @@
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
-        <script href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script>
+            $(document).ready(function(){
+                $('.carousel').carousel({
+                    interval: 3000 // Set interval to 5000 milliseconds (5 seconds)
+                });
+            });
+        </script>
 
         <!-- Styles / Scripts -->
         @if (file_exists(public_path('build/manifest.json')) || file_exists(public_path('hot')))
@@ -54,10 +62,35 @@
             </nav>
             @endif
         </header>
-        <img src="\image\Leonardo_Phoenix_09_a_highly_detailed_3D_render_of_a_whimsical_1.jpg" alt="" class="w-full h-full object-cover">
+        <div id="carouselExampleIndicators" class="carousel slide w-full h-full" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            </div>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="https://lh3.googleusercontent.com/p/AF1QipN-yuiaK4YzoiIZ-TlLv2d3aYWpOettT8dB5Zrt=s1360-w1360-h1020" class="d-block w-100" alt="...">
+                </div>
+                <div class="carousel-item">
+                    <img src="https://lh3.googleusercontent.com/p/AF1QipNEUIwjl_AlY9iguTJCngaGZ1TTmvt318xTRzoV=s1360-w1360-h1020" class="d-block w-100" alt="...">
+                </div>
+                <div class="carousel-item">
+                    <img src="https://lh3.googleusercontent.com/p/AF1QipPiI-3CXiwFKRZZTDO_HD3Ytu33DtXjBFHeMkmR=s1360-w1360-h1020" class="d-block w-100" alt="...">
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
         <div class="max-w-7xl mx-auto p-6">
-            <h2 class="text-2xl font-bold mb-4 text-[#FFD700]">ไอเดียเทรดกราฟเทคนิค</h2>
-            <p class="text-gray-600 mb-6">เทรดแม่นยำด้วยกราฟเทคนิค! คว้าโอกาสทำกำไรทุกสภาวะตลาด พร้อมเคล็ดลับจากมือโปร</p>
+            <h2 class="text-2xl font-bold mb-4 text-[#FFD700]">คอร์สเรียนแนะนำ</h2>
+            <p class="text-gray-600 mb-6">คุณต้องชอบคอร์สเหล่านี้แน่นอน!</p>
         
             <!-- Grid Layout -->
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">

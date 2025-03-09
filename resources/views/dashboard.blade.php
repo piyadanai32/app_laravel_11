@@ -1,17 +1,13 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Dashboard') }}
+        <h2 class="font-semibold text-xl text-purple-800 leading-tight">
+            {{ __('ยินดีต้อนรับสู่ BRU E-Learning') }}
         </h2>
     </x-slot>
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900">
-                    {{ __("You're logged in!") }}
-                </div>
+    <div class="min-h-screen py-12 bg-cover bg-center" style="background-image: url('https://lh3.googleusercontent.com/p/AF1QipN-yuiaK4YzoiIZ-TlLv2d3aYWpOettT8dB5Zrt=s1360-w1360-h1020');">    
             </div>
         </div>
     </div>
 </x-app-layout>
+

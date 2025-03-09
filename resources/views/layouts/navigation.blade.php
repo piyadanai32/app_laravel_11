@@ -1,11 +1,11 @@
-<nav x-data="{ open: false }" class="bg-gray-800 border-b border-gray-700 shadow-lg">
+<nav x-data="{ open: false }" class="bg-purple-800 border-b border-purple-700 shadow-lg">
     <!-- Primary Navigation Menu -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
             <div class="flex">
                 <!-- Logo -->
                 <a href="/" class="flex items-center">
-                    <img src="https://www.bru.ac.th/wp-content/uploads/2018/09/LOGO-bru-227x300.png" alt="BRU Logo" class="h-10 w-10 rounded-full shadow-md">
+                    <img src="https://www.bru.ac.th/wp-content/uploads/2018/09/LOGO-bru-227x300.png" alt="BRU Logo" class="h-12 w-8 rounded-full shadow-md">
                 </a>
 
                 <!-- Navigation Links -->
@@ -42,7 +42,7 @@
                 <x-dropdown align="right" width="48">
                     <x-slot name="trigger">
                         <button
-                            class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-yellow-500 bg-gray-800 hover:text-yellow-300 focus:outline-none transition ease-in-out duration-150">
+                            class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-yellow-500 bg-purple-800 hover:text-yellow-300 focus:outline-none transition ease-in-out duration-150">
                             <div>{{ Auth::user()->name }}</div>
                             <div class="ms-1">
                                 <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg"
@@ -91,7 +91,7 @@
             <!-- Hamburger -->
             <div class="-me-2 flex items-center sm:hidden">
                 <button @click="open = ! open"
-                    class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-yellow-300 hover:bg-gray-700 focus:outline-none focus:bg-gray-700 focus:text-yellow-300 transition duration-150 ease-in-out">
+                    class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-yellow-300 hover:bg-purple-700 focus:outline-none focus:bg-purple-700 focus:text-yellow-300 transition duration-150 ease-in-out">
                     <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
                         <path :class="{ 'hidden': open, 'inline-flex': !open }" class="inline-flex"
                             stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -113,7 +113,7 @@
         </div>
 
         <!-- Responsive Settings Options -->
-        <div class="pt-4 pb-1 border-t border-gray-700">
+        <div class="pt-4 pb-1 border-t border-purple-700">
             <div class="px-4">
                 <div class="font-medium text-base text-yellow-500">{{ Auth::user()->name }}</div>
                 <div class="font-medium text-sm text-yellow-400">{{ Auth::user()->email }}</div>

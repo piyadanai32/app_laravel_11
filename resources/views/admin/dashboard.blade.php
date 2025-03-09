@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-purple-600 leading-tight">
-            {{ __('Dashboard Admin') }}
+            {{ __('แดชบอร์ดผู้ดูแลระบบ') }}
         </h2>
     </x-slot>
 
@@ -9,13 +9,13 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             <!-- Card: Total Users -->
             <div class="bg-yellow-300 shadow rounded-lg p-6">
-                <h3 class="text-lg font-semibold text-purple-700">Total Users</h3>
+                <h3 class="text-lg font-semibold text-purple-700">จำนวนผู้ใช้ทั้งหมด</h3>
                 <p class="text-3xl font-bold mt-2 text-purple-900">{{ $users->count() }}</p>
             </div>
             
             <!-- Card: Total Courses -->
             <div class="bg-yellow-300 shadow rounded-lg p-6">
-                <h3 class="text-lg font-semibold text-purple-700">Total Courses</h3>
+                <h3 class="text-lg font-semibold text-purple-700">จำนวนคอร์สทั้งหมด</h3>
                 <p class="text-3xl font-bold mt-2 text-purple-900">{{ $courses->count() }}</p>
             </div>
         </div>
@@ -23,13 +23,13 @@
         <div class="mt-6 max-w-7xl mx-auto sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-6">
             <!-- User Table -->
             <div class="bg-white shadow rounded-lg p-6">
-                <h3 class="text-lg font-semibold text-purple-600 mb-4">User Information</h3>
+                <h3 class="text-lg font-semibold text-purple-600 mb-4">ข้อมูลผู้ใช้</h3>
                 <table class="min-w-full border-collapse border border-gray-200">
                     <thead>
                         <tr class="bg-purple-100">
-                            <th class="py-2 px-4 border text-purple-600">Name</th>
-                            <th class="py-2 px-4 border text-purple-600">Email</th>
-                            <th class="py-2 px-4 border text-purple-600">Registered At</th>
+                            <th class="py-2 px-4 border text-purple-600">ชื่อ</th>
+                            <th class="py-2 px-4 border text-purple-600">อีเมล</th>
+                            <th class="py-2 px-4 border text-purple-600">ลงทะเบียนเมื่อ</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -46,13 +46,13 @@
             
             <!-- Course Table -->
             <div class="bg-white shadow rounded-lg p-6">
-                <h3 class="text-lg font-semibold text-purple-600 mb-4">Courses Information</h3>
+                <h3 class="text-lg font-semibold text-purple-600 mb-4">ข้อมูลคอร์ส</h3>
                 <table class="min-w-full border-collapse border border-gray-200">
                     <thead>
                         <tr class="bg-purple-100">
-                            <th class="py-2 px-4 border text-purple-600">Title</th>
-                            <th class="py-2 px-4 border text-purple-600">Description</th>
-                            <th class="py-2 px-4 border text-purple-600">Created At</th>
+                            <th class="py-2 px-4 border text-purple-600">ชื่อคอร์ส</th>
+                            <th class="py-2 px-4 border text-purple-600">คำอธิบาย</th>
+                            <th class="py-2 px-4 border text-purple-600">สร้างเมื่อ</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -70,7 +70,7 @@
 
         <div class="mt-6 max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white shadow rounded-lg p-6">
-                <h3 class="text-lg font-semibold text-purple-600 mb-4">User Statistics</h3>
+                <h3 class="text-lg font-semibold text-purple-600 mb-4">สถิติผู้ใช้</h3>
                 <canvas id="userChart"></canvas>
             </div>
         </div>
@@ -84,7 +84,7 @@
             data: {
                 labels: {!! json_encode($userLabels) !!},
                 datasets: [{
-                    label: 'Users',
+                    label: 'ผู้ใช้',
                     data: {!! json_encode($userCounts) !!},
                     backgroundColor: 'rgba(106, 13, 173, 0.5)',
                     borderColor: 'rgba(106, 13, 173, 1)',
